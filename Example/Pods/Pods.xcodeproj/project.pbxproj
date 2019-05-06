@@ -409,7 +409,6 @@
 		84E00494F379CCBAD247507D18947A5E /* Base64.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Base64.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B7B4237C6CD0EFEFE584407CEB3574 /* UIView+Animator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIView+Animator.m"; sourceTree = "<group>"; };
 		8677BC25B38E66FC0A73863FBAAD3EA6 /* UIButton+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+WebCache.m"; path = "SDWebImage/UIButton+WebCache.m"; sourceTree = "<group>"; };
-		86874A0732DC6585C35C9F1DB5D7AE64 /* UIViewController+QLHJBaseVC.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIViewController+QLHJBaseVC.h"; sourceTree = "<group>"; };
 		87687F9725FB18A6BCE1B8577721C756 /* QLTransitionPresenPushStyleAnimator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = QLTransitionPresenPushStyleAnimator.m; sourceTree = "<group>"; };
 		8A3E775E8FA9E24AC12643A0A816DD2B /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+WebCacheOperation.h"; path = "SDWebImage/UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		8BD28CC461D63824980F12C027E4C040 /* MF_Base64Additions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MF_Base64Additions.m; path = Base64/MF_Base64Additions.m; sourceTree = "<group>"; };
@@ -493,7 +492,6 @@
 		E288DBCC94C25DDA643EC8213771EAD4 /* MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
 		E2A44A763D24111A11A825FE4DC2E18C /* Pods-QLCommonUtils_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-QLCommonUtils_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		E4BECBEBD8222F1EBCF18B048B428B30 /* SDWebImageImageIOCoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageImageIOCoder.m; path = SDWebImage/SDWebImageImageIOCoder.m; sourceTree = "<group>"; };
-		E5C4267BE1A084F09BF40645ECB5E2C1 /* UIViewController+QLHJBaseVC.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+QLHJBaseVC.m"; sourceTree = "<group>"; };
 		E6AEDC31DDADCB24F4F3008F13E78C98 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E87E2E2CAAEEAAC4B70A5B497143BBEF /* NSString+QLBase64.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSString+QLBase64.m"; sourceTree = "<group>"; };
 		EAF03273DBF0114E9C483B33D89CD797 /* SDImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCache.h; path = SDWebImage/SDImageCache.h; sourceTree = "<group>"; };
@@ -1126,8 +1124,6 @@
 				85B7B4237C6CD0EFEFE584407CEB3574 /* UIView+Animator.m */,
 				DA963768DC716AC01ACBC9D2098A732E /* UIView+QLLayer.h */,
 				5752812AAD9AEFF789C10D149D6DD75A /* UIView+QLLayer.m */,
-				86874A0732DC6585C35C9F1DB5D7AE64 /* UIViewController+QLHJBaseVC.h */,
-				E5C4267BE1A084F09BF40645ECB5E2C1 /* UIViewController+QLHJBaseVC.m */,
 			);
 			name = Catagory;
 			path = QLCommonUtils/Classes/Catagory;

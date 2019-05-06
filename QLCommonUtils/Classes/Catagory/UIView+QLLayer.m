@@ -7,7 +7,7 @@
 //
 
 #import "UIView+QLLayer.h"
-
+    
 @implementation UIView (QLLayer)
 //绘制渐变色颜色的方法
 - (CAGradientLayer *)getGradualChangingColorFromColor:(UIColor *)fromHexColor toColor:(UIColor *)toHexColor{
