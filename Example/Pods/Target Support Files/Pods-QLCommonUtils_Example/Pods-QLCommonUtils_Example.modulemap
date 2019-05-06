@@ -1,0 +1,6 @@
+framework module Pods_QLCommonUtils_Example {
+  umbrella header "Pods-QLCommonUtils_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

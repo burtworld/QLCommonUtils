@@ -4,7 +4,7 @@ platform :ios, '8.0'
 
 target 'QLCommonUtils_Example' do
   pod 'QLCommonUtils', :path => '../'
-
+  
   target 'QLCommonUtils_Tests' do
     inherit! :search_paths
 

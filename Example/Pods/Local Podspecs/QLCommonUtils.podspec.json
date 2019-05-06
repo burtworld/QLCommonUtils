@@ -1,0 +1,39 @@
+{
+  "name": "QLCommonUtils",
+  "version": "0.1.0",
+  "summary": "A short description of QLCommonUtils.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Paramita/QLCommonUtils",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Paramita": "baqkoo007@aliyun.com"
+  },
+  "source": {
+    "git": "https://github.com/Paramita/QLCommonUtils.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "QLCommonUtils/Classes/**/*",
+  "dependencies": {
+    "Base64": [
+
+    ],
+    "MBProgressHUD": [
+
+    ],
+    "FMDB": [
+
+    ],
+    "SDWebImage": [
+      "~> 4.3.3"
+    ],
+    "RTRootNavigationController": [
+      "~> 0.7.0"
+    ]
+  }
+}

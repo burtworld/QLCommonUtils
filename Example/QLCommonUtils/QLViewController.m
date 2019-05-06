@@ -8,6 +8,8 @@
 
 #import "QLViewController.h"
 
+#import <FMDB/FMDB.h>
+
 @interface QLViewController ()
 
 @end
