@@ -28,6 +28,7 @@
     [super viewDidLoad];
     self.navigationController.navigationBar.translucent = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.edgesForExtendedLayout = UIRectEdgeBottom;
     if (self.barImage) {
          [self.navigationController.navigationBar setBackgroundImage:self.barImage forBarMetrics:UIBarMetricsDefault];
     }
@@ -75,6 +76,10 @@
     [super didReceiveMemoryWarning];
     QLLOG_WARNING(@"收到内存警告");
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc {
+    NSLog(@"%@-%s",NSStringFromClass([self class]),__FUNCTION__);
 }
 
 /*

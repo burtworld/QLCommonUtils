@@ -1,9 +1,8 @@
 {
   "name": "QLCommonUtils",
   "version": "0.1.0",
-  "summary": "A short description of QLCommonUtils.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/Paramita/QLCommonUtils",
+  "summary": "a common utils for ios project",
+  "homepage": "https://github.com/burtworld/QLCommonUtils",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,7 +11,7 @@
     "Paramita": "baqkoo007@aliyun.com"
   },
   "source": {
-    "git": "https://github.com/Paramita/QLCommonUtils.git",
+    "git": "https://github.com/burtworld/QLCommonUtils.git",
     "tag": "0.1.0"
   },
   "platforms": {

@@ -46,20 +46,26 @@
 }
 
 - (NSMutableDictionary *)disassembleUrlToDic {
+//    NSURL *url = [NSURL URLWithString:self];
+//    url.query
     NSArray * urlArray = [self componentsSeparatedByString:@"?"];
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:urlArray[0] forKey:@"url"];
     if (urlArray.count == 2) {
         NSArray * paramAry = [urlArray[1] componentsSeparatedByString:@"&"];
         for (NSString * param in paramAry) {
-            NSRange range = [param rangeOfString:@"="];
-            if (range.location != NSNotFound) {
-                NSString *key = [param substringToIndex:range.location];
-                NSString *value = [param substringFromIndex:range.location + range.length];
-                [dic setObject:value forKey:key];
-            }else{
-                QLLOG_WARNING(@"查找字符串警告：");
+            NSArray *keyValues = [param componentsSeparatedByString:@"="];
+            if (keyValues.count >= 2) {
+                [dic setObject:keyValues[1] forKey:keyValues[0]];
             }
+//            NSRange range = [param rangeOfString:@"="];
+//            if (range.location != NSNotFound) {
+//                NSString *key = [param substringToIndex:range.location];
+//                NSString *value = [param substringFromIndex:range.location + range.length];
+//                [dic setObject:value forKey:key];
+//            }else{
+//                QLLOG_WARNING(@"查找字符串警告：");
+//            }
         }
     }
     return dic;

@@ -57,7 +57,9 @@
                 block(newVersion,releaseNote,url,NO);
             }
         }else{
-            block(nil,@"当前已是最新版本",nil,NO);
+            if (block) {
+                block(nil,@"当前已是最新版本",nil,NO);
+            }
         }
     }];
     [tast resume];

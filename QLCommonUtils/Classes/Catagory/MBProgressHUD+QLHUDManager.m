@@ -10,7 +10,9 @@
 #import <SDWebImage/UIImage+GIF.h>
 
 @implementation MBProgressHUD (QLHUDManager)
-+ (void)promptWithText:(NSString *)text andDetailText:(NSString *)detailText {
+
+
++ (void)promptWithText:(NSString *)text andDetailText:(NSString *)detailText autoHidden:(int)delay{
     if (![text isKindOfClass:[NSString class]]) {
         return;
     }
@@ -43,9 +45,15 @@
             [keyWindow bringSubviewToFront:hud];
             
             [hud showAnimated:YES];
-            [hud hideAnimated:YES afterDelay:2.0f];
+            if (delay > 0) {
+                [hud hideAnimated:YES afterDelay:delay];
+            }
         });
     }
+}
+
++ (void)promptWithText:(NSString *)text andDetailText:(NSString *)detailText {
+    [[self class] promptWithText:text andDetailText:detailText autoHidden:2.0f];
 }
 
 + (void)promptWithText:(NSString *)text {
@@ -104,8 +112,9 @@
 //    MBProgressHUD *hud = [MBProgressHUD HUDForView:view];
 //    [hud hideAnimated:YES];
     dispatch_async(dispatch_get_main_queue(), ^{
-        [MBProgressHUD hideHUDForView:view animated:YES];
+        while ([MBProgressHUD HUDForView:view] != nil) {
+            [MBProgressHUD hideHUDForView:view animated:YES];
+        }
     });
-    
 }
 @end

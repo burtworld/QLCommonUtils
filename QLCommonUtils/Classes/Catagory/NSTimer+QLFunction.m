@@ -22,6 +22,7 @@
         return;
     }
     [self setFireDate:[NSDate distantPast]];//开启
+
 }
 
 -(void)resumeTimer

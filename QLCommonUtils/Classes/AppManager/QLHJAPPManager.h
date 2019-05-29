@@ -109,6 +109,8 @@
 #define IPHONE_SAFEBOTTOMAREA_HEIGHT (IS_IPHONE_X ? 34 : 0)
 #define IPHONE_TOPSENSOR_HEIGHT      (IS_IPHONE_X ? 32 : 0)
 
+#define iPhoneXSeries (([[UIApplication sharedApplication] statusBarFrame].size.height == 44.0f) ? (YES):(NO))
+
 //#ifdef DEBUG
 ////调试状态
 //#define MyString [NSString stringWithFormat:@"%s", __FILE__].lastPathComponent
@@ -123,6 +125,12 @@
 #define QLLOG(format, ...) fprintf(stderr,"%s\n",[[NSString stringWithFormat:format, ##__VA_ARGS__] UTF8String])
 #else
 #define QLLOG(format, ...) nil
+#endif
+
+#if DEBUG
+#define NSLog(format, ...) fprintf(stderr,"%s\n",[[NSString stringWithFormat:format, ##__VA_ARGS__] UTF8String])
+#else
+#define NSLog(format, ...) nil
 #endif
 
 #define QLLOG_WARNING(discribe) QLLOG(@"%@ %@ ⚠️ SEL-%@ %@", [NSString getNowTimeString],self.class, NSStringFromSelector(_cmd), discribe)

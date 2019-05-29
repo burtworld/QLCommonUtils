@@ -36,11 +36,7 @@
     #import "QLHJBaseNavigationController.h"
     #import "IBDesignableView.h"
 
-    // pop
-    #import "QLPopView.h"
-    #import "QLPopViewItemProtocol.h"
-    #import "QLPopItemModel.h"
-    #import "QLPopTableView.h"
+    // pop view removed as a dependence lib
 
     // catagory
     #import "UIImage+QLExtensions.h"
@@ -61,8 +57,8 @@
     #import "NSData+QLHEX.h"
     #import "NSData+QLImageType.h"
     #import "UIColor+QLColor.h"
-    #import "UIView+QLLayer.h"
     #import "UIView+Animator.h"
+    #import "UIView+AZGradient.h"
     // TransitionAnimator
     #import "QLTransitionDismissPopStyleAnimator.h"
     #import "QLTransitionPresenPushStyleAnimator.h"
