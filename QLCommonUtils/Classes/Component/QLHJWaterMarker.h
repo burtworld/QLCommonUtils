@@ -11,7 +11,7 @@
 @interface QLHJWaterMarker : UIImage
 
 //! 默认背景色为白色
-+ (UIImage *)waterMakerWithRect:(CGRect)rect Text:(NSArray<NSString *> *)texts;
++ (UIImage *)waterMakerWithRect:(CGRect)rect Text:(NSArray<NSString *> *)texts ;
 
 //! 默认旋转角度为0
 + (UIImage *)waterMakerWithRect:(CGRect)rect bgColor:(UIColor *)bgColor Text:(NSArray<NSString *> *)texts;
@@ -28,4 +28,16 @@
 + (UIImage *)waterMakerWithRect:(CGRect)rect bgColor:(UIColor *)bgColor degres:(CGFloat)degrees Text:(NSArray<NSString *> *)texts;
 
 
+/**
+ 根据目标图片制作一个盖水印的图片
+ 
+ @param originalImage 源图片
+ @param title 水印文字
+ @param markFont 水印文字font(如果不传默认为23)
+ @param markColor 水印文字颜色(如果不传递默认为源图片的对比色)
+ @return 返回盖水印的图片
+ */
++ (UIImage *)getWaterMarkImage:(UIImage *)originalImage andTitle: (NSString *)title andMarkFont: (UIFont *)markFont andMarkColor: (UIColor *)markColor;
+
++ (UIImage *)getWaterMarkImage:(CGSize )size texts: (NSArray *)texts font: (UIFont *)font textColor: (UIColor *)textColor bgColor:(UIColor *)bgColor;
 @end

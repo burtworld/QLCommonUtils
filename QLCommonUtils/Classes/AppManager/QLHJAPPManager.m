@@ -21,6 +21,15 @@
     return manger;
 }
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.openLog = YES;
+        
+    }
+    return self;
+}
+
 + (NSString*)deviceString
 {
     // 需要#import "sys/utsname.h"

@@ -103,7 +103,9 @@
 #define IS_IPHONE (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
 #define SizeScale ((SCREEN_HEIGHT > 568) ? SCREEN_HEIGHT/568 : 1)
 
-#define IS_IPHONE_X [KDDeviceHelper is_iPhone_X]
+
+#define IS_IPHONE_X ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+
 #define IPHONE_NAVIGATIONBAR_HEIGHT  (IS_IPHONE_X ? 88 : 64)
 #define IPHONE_STATUSBAR_HEIGHT      (IS_IPHONE_X ? 44 : 20)
 #define IPHONE_SAFEBOTTOMAREA_HEIGHT (IS_IPHONE_X ? 34 : 0)
@@ -121,17 +123,24 @@
 //#define QLLog(...){}
 //#endif
 
+#define kOpenLog ([QLHJAPPManager defaultManager].openLog)
+#ifdef kOpenLog
+#define NSLog(format, ...) fprintf(stderr,"%s\n",[[NSString stringWithFormat:format, ##__VA_ARGS__] UTF8String])
+#else
+#define NSLog(format, ...) nil
+#endif
+
 #if DEBUG
 #define QLLOG(format, ...) fprintf(stderr,"%s\n",[[NSString stringWithFormat:format, ##__VA_ARGS__] UTF8String])
 #else
 #define QLLOG(format, ...) nil
 #endif
 
-#if DEBUG
-#define NSLog(format, ...) fprintf(stderr,"%s\n",[[NSString stringWithFormat:format, ##__VA_ARGS__] UTF8String])
-#else
-#define NSLog(format, ...) nil
-#endif
+//#if DEBUG
+//#define NSLog(format, ...) fprintf(stderr,"%s\n",[[NSString stringWithFormat:format, ##__VA_ARGS__] UTF8String])
+//#else
+//#define NSLog(format, ...) nil
+//#endif
 
 #define QLLOG_WARNING(discribe) QLLOG(@"%@ %@ ⚠️ SEL-%@ %@", [NSString getNowTimeString],self.class, NSStringFromSelector(_cmd), discribe)
 #define QLLOG_ERROR(discribe) QLLOG(@"%@ ❌ SEL-%@ %@", self.class, NSStringFromSelector(_cmd), discribe)
@@ -145,6 +154,9 @@ memset(p, s, size);}
 #define kLayoutFacotr 0.4
 
 @interface QLHJAPPManager : NSObject
+
+@property (nonatomic, assign) BOOL openLog;
+
 + (instancetype)defaultManager;
 + (NSString*)deviceString;
 + (NSString *)appVersion;
