@@ -113,7 +113,10 @@ static const char QLHJPercentDrivenTransitionKey = '\0';
     UIButton * button= [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage * buttonImage = img;
     [button setImage:buttonImage forState:UIControlStateNormal];
-    button.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height);
+    button.titleLabel.font = [UIFont systemFontOfSize:16.0f];
+    [button setTitle:@" 返回" forState:UIControlStateNormal];
+    [button sizeToFit];
+//    button.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height);
     [button addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:button];
     [self addLeftBarButtonItem:leftItem];
@@ -156,7 +159,7 @@ static const char QLHJPercentDrivenTransitionKey = '\0';
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
     {
-        negativeSpacer.width = -20;
+        negativeSpacer.width = 0;
         self.navigationItem.leftBarButtonItems=@[negativeSpacer,leftBarButtonItem];
 //        self.navigationItem.leftBarButtonItem=leftBarButtonItem;
     }

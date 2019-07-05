@@ -104,14 +104,16 @@
 #define SizeScale ((SCREEN_HEIGHT > 568) ? SCREEN_HEIGHT/568 : 1)
 
 
-#define IS_IPHONE_X ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
-
-#define IPHONE_NAVIGATIONBAR_HEIGHT  (IS_IPHONE_X ? 88 : 64)
-#define IPHONE_STATUSBAR_HEIGHT      (IS_IPHONE_X ? 44 : 20)
-#define IPHONE_SAFEBOTTOMAREA_HEIGHT (IS_IPHONE_X ? 34 : 0)
-#define IPHONE_TOPSENSOR_HEIGHT      (IS_IPHONE_X ? 32 : 0)
-
+#define IS_IPHONE_X (CGSizeEqualToSize(CGSizeMake(375.f, 812.f), [UIScreen mainScreen].bounds.size) || CGSizeEqualToSize(CGSizeMake(812.f, 375.f), [UIScreen mainScreen].bounds.size))
 #define iPhoneXSeries (([[UIApplication sharedApplication] statusBarFrame].size.height == 44.0f) ? (YES):(NO))
+
+
+#define IPHONE_NAVIGATIONBAR_HEIGHT  (iPhoneXSeries ? 88 : 64)
+#define IPHONE_STATUSBAR_HEIGHT      (iPhoneXSeries ? 44 : 20)
+#define IPHONE_SAFEBOTTOMAREA_HEIGHT (iPhoneXSeries ? 34 : 0)
+#define IPHONE_TOPSENSOR_HEIGHT      (iPhoneXSeries ? 32 : 0)
+
+
 
 //#ifdef DEBUG
 ////调试状态
@@ -125,13 +127,13 @@
 
 #define kOpenLog ([QLHJAPPManager defaultManager].openLog)
 #ifdef kOpenLog
-#define NSLog(format, ...) fprintf(stderr,"%s\n",[[NSString stringWithFormat:format, ##__VA_ARGS__] UTF8String])
+#define NSLog(format, ...) fprintf(stderr,"[%s] %s\n",[[NSString getNowTimeString] UTF8String],[[NSString stringWithFormat:format, ##__VA_ARGS__] UTF8String])
 #else
 #define NSLog(format, ...) nil
 #endif
 
 #if DEBUG
-#define QLLOG(format, ...) fprintf(stderr,"%s\n",[[NSString stringWithFormat:format, ##__VA_ARGS__] UTF8String])
+#define QLLOG(format, ...) fprintf(stderr,"[%s] %s\n",[[NSString getNowTimeString] UTF8String],[[NSString stringWithFormat:format, ##__VA_ARGS__] UTF8String])
 #else
 #define QLLOG(format, ...) nil
 #endif
@@ -142,8 +144,8 @@
 //#define NSLog(format, ...) nil
 //#endif
 
-#define QLLOG_WARNING(discribe) QLLOG(@"%@ %@ ⚠️ SEL-%@ %@", [NSString getNowTimeString],self.class, NSStringFromSelector(_cmd), discribe)
-#define QLLOG_ERROR(discribe) QLLOG(@"%@ ❌ SEL-%@ %@", self.class, NSStringFromSelector(_cmd), discribe)
+#define NSLog_WARNING(discribe) QLLOG(@"%@ %@ ⚠️ SEL-%@ %@", [NSString getNowTimeString],self.class, NSStringFromSelector(_cmd), discribe)
+#define NSLog_ERROR(discribe) QLLOG(@"%@ %@ ❌ SEL-%@ %@", [NSString getNowTimeString],self.class, NSStringFromSelector(_cmd), discribe)
 
 #define QLHJWeakSelf(type)  __weak typeof(type) weak##type = type;
 

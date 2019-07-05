@@ -43,7 +43,7 @@
     {
         if([self platform].length > 6 )
         {
-            NSString * numberPlatformStr = [[self platform] substringWithRange:NSMakeRange(6, 1)];
+            NSString * numberPlatformStr = [[self platform] substringWithRange:NSMakeRange(6, 2)];
             NSInteger numberPlatform = [numberPlatformStr integerValue];
             // 是否是5s以上的设备
             if(numberPlatform > 5)

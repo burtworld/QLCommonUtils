@@ -22,7 +22,7 @@
     #import "QLCalendarTool.h"
 
     /// tools
-    #import "QLHJSqliterHelper.h"
+//    #import "QLHJSqliterHelper.h"
     #import "QLVersionUpdater.h"
     #import "QLUserDefault.h"
     #import "WebViewCookiesHelper.h"

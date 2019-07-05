@@ -24,8 +24,9 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+#ifdef DEBUG
         self.openLog = YES;
-        
+#endif
     }
     return self;
 }
@@ -128,11 +129,8 @@
     NSString *fileName = [NSString stringWithFormat:@"%@.log",dateString];// 注意不是NSData!
     
     NSString *logFilePath = [documentDirectory stringByAppendingPathComponent:fileName];
-    
-    
-    
+
     // 将log输入到文件
-    
     freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stdout);
     
     freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stderr);

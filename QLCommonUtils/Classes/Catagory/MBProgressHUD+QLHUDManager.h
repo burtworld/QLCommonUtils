@@ -7,7 +7,9 @@
 //
 
 #import <MBProgressHUD/MBProgressHUD.h>
-   
+
+#import <SVProgressHUD/SVProgressHUD.h>
+
 @interface MBProgressHUD (QLHUDManager)
 /// 注意，使用此方法时，全部挂载到window上，需要自己从window上移除
 + (void)promptWithText:(NSString *)text andDetailText:(NSString *)detailText autoHidden:(int)delay;

@@ -80,8 +80,8 @@
 }
 
 
-#define HORIZONTAL_SPACE 30//水平间距
-#define VERTICAL_SPACE 50//竖直间距
+#define HORIZONTAL_SPACE    50//水平间距
+#define VERTICAL_SPACE      80//竖直间距
 
 
 + (UIImage *)getWaterMarkImage:(UIImage *)originalImage andTitle: (NSString *)title andMarkFont: (UIFont *)markFont andMarkColor: (UIColor *)markColor {
@@ -233,13 +233,12 @@
     NSMutableArray *array = [NSMutableArray array];
     for (int i = 0; i < texts.count; i++) {
         [array addObject:texts[i]];
-        [array addObject:@"　　　　"];
+        [array addObject:@"　　　"];
     }
     // 将数组的第一个拼到数组的最后一个
     if (!array.count) {
         return nil;
     }
-    [array addObject:array[0]];
     return [array componentsJoinedByString:@""];
 }
 

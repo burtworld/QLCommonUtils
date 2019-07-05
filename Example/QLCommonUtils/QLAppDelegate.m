@@ -8,6 +8,8 @@
 
 #import "QLAppDelegate.h"
 
+
+
 @implementation QLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

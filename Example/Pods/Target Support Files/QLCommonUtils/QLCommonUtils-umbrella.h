@@ -47,7 +47,6 @@
 #import "QLHJRSA.h"
 #import "QLHJDataModel.h"
 #import "QLCommonUtils.h"
-#import "QLHJSqliterHelper.h"
 #import "QLVersionUpdater.h"
 #import "WebViewCookiesHelper.h"
 

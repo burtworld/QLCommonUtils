@@ -8,7 +8,6 @@
 
 #import "QLViewController.h"
 
-#import <FMDB/FMDB.h>
 #import <QLCommonUtils/QLCommonUtils.h>
 @interface QLViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;

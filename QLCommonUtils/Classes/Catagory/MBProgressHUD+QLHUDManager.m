@@ -11,6 +11,11 @@
 
 @implementation MBProgressHUD (QLHUDManager)
 
+//+ (void)load {
+//    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+//    [SVProgressHUD setRingRadius:30];
+//    [SVProgressHUD setRingThickness:3];
+//}
 
 + (void)promptWithText:(NSString *)text andDetailText:(NSString *)detailText autoHidden:(int)delay{
     if (![text isKindOfClass:[NSString class]]) {
@@ -19,8 +24,10 @@
     
     if (text.length || detailText.length) {
         dispatch_async(dispatch_get_main_queue(), ^{
+//            [SVProgressHUD showInfoWithStatus:text];
+//            [SVProgressHUD dismissWithDelay:delay ? delay : 2.0f];
             UIWindow * keyWindow = [UIApplication sharedApplication].keyWindow;
-            
+
             MBProgressHUD * hud = [[MBProgressHUD alloc]initWithView:keyWindow];
             hud.label.font = [UIFont systemFontOfSize:14.0f];
             hud.mode = MBProgressHUDModeText;
@@ -33,7 +40,7 @@
                 hud.label.text = text;
                 hud.label.numberOfLines = 0;
             }
-            
+
             if (detailText.length) {
                 hud.detailsLabel.font = [UIFont systemFontOfSize:14.0f];
                 hud.detailsLabel.text = text;
@@ -43,7 +50,7 @@
             hud.bezelView.opaque = YES;
             [keyWindow addSubview:hud];
             [keyWindow bringSubviewToFront:hud];
-            
+
             [hud showAnimated:YES];
             if (delay > 0) {
                 [hud hideAnimated:YES afterDelay:delay];
@@ -62,8 +69,9 @@
 
 + (void)showLoadingToView:(UIView *)view text:(NSString *)text detailText:(NSString *)detailText {
     dispatch_async(dispatch_get_main_queue(), ^{
+//        [SVProgressHUD showWithStatus:text];
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-        
+
         hud.label.text = text;
         // Set the details label text. Let's make it multiline this time.
         if (detailText) {
@@ -72,7 +80,6 @@
         hud.square = YES;
         hud.removeFromSuperViewOnHide = YES;
     });
-    
 }
 
 + (void)showWithGIF:(NSString *)gifurl view:(UIView *)view {
@@ -91,7 +98,6 @@
     hud.square = YES;
 //    // Optional label text.
     hud.label.text = NSLocalizedString(@"Done", @"HUD done title");
-
 }
 
 /**
@@ -108,7 +114,7 @@
 
 //! 移除view上的所有HUD
 + (void)hideHUDForView:(UIView *)view {
-    
+//    [SVProgressHUD dismiss];
 //    MBProgressHUD *hud = [MBProgressHUD HUDForView:view];
 //    [hud hideAnimated:YES];
     dispatch_async(dispatch_get_main_queue(), ^{
