@@ -1,0 +1,6 @@
+framework module QLCommonUtils {
+  umbrella header "QLCommonUtils.h"
+
+  export *
+  module * { export * }
+}
