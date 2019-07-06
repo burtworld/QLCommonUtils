@@ -59,7 +59,7 @@
     if (VERSION_7_UP) {
         if (self.barImage) {
             [self.navigationBar setBackgroundImage:self.barImage forBarMetrics:UIBarMetricsDefault];
-        }else{
+        }else if (self.barColor != nil){
             UIImage * img = [[UIImage imageWithColor:self.barColor size:CGSizeMake(2, 2)] resizableImageWithCapInsets:UIEdgeInsetsMake(1, 0.5, 1, 0.5)];
             [self.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
         }
