@@ -272,8 +272,8 @@
     
     if (self.length >= 11) {
         NSString *tel = [self copy];
-        NSString *starStr = [tel substringWithRange:NSMakeRange(3, 5)];
-        tel = [tel stringByReplacingOccurrencesOfString:starStr withString:@"*****"];
+        NSString *starStr = [tel substringWithRange:NSMakeRange(3, 4)];
+        tel = [tel stringByReplacingOccurrencesOfString:starStr withString:@"****"];
         return tel;
     }
     return self;
