@@ -170,6 +170,12 @@ memset(p, s, size);}
 
 //! 将日志输出到文件
 + (void)redirectNSlogToDocumentFolder;
+
+//! 是否lldb调试模式
++ (BOOL)existDebugger;
+
+//!
++ (BOOL)checkOutSandBox;
 @end
 
 

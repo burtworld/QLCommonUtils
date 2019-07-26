@@ -10,6 +10,10 @@
 #import "sys/utsname.h"
 #import <UIKit/UIKit.h>
 #include <dlfcn.h>
+#import <sys/types.h>
+#import <sys/sysctl.h>
+#import <sys/stat.h>
+
 
 @implementation QLHJAPPManager
 + (instancetype)defaultManager{
@@ -134,6 +138,63 @@
     freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stdout);
     
     freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stderr);
+}
+
++ (BOOL)existDebugger {
+    int name[4];//指定查询信息的数组
+    struct kinfo_proc info;//查询的返回结果
+    size_t info_size = sizeof(info);
+    info.kp_proc.p_flag = 0;
+    
+    name[0] = CTL_KERN;
+    name[1] = KERN_PROC;
+    name[2] = KERN_PROC_PID;
+    name[3] = getpid();
+    if (sysctl(name, 4, &info, &info_size, NULL, 0) == -1) {
+        NSLog(@"sysctl error ...");
+        return NO;
+    }
+    return ((info.kp_proc.p_flag & P_TRACED) != 0);
+}
+
++ (BOOL)checkOutSandBox {
+    //使用stat系列函数检测Cydia等工具
+    NSString *cydiaPath = @"/Applications/Cydia.app";
+    NSString *aptPath = @"/private/var/lib/apt/";
+    NSString *applications = @"/User/Applications/";
+    NSString *Mobile = @"/Library/MobileSubstrate/MobileSubstrate.dylib";
+    NSString *bash = @"/bin/bash";
+    NSString *sshd =@"/usr/sbin/sshd";
+    NSString *sd = @"/etc/apt";
+    BOOL exist = NO;
+    if([[NSFileManager defaultManager] fileExistsAtPath:cydiaPath]) {
+        exist = YES;
+    }
+    
+    if([[NSFileManager defaultManager] fileExistsAtPath:aptPath]) {
+        exist = YES;
+    }
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:applications]){
+        exist = YES;
+    }
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:Mobile]){
+        exist = YES;
+    }
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:bash]){
+        exist = YES;
+    }
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:sshd]){
+        exist = YES;
+    }
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:sd]){
+        exist = YES;
+    }
+    return exist;
 }
 
 
