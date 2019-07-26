@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'QLCommonUtils'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'a common utils for ios project'
 
   s.homepage         = 'https://github.com/burtworld/QLCommonUtils'
