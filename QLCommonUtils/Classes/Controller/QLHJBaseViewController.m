@@ -71,6 +71,9 @@
     [self backActionByQLHJ:YES];
 }
 
+- (void)getScreenInfo:(void(^)(NSString *screenInfo,NSString *detail))block {
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

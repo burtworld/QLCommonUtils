@@ -274,7 +274,7 @@
         NSString *tel = [self copy];
 //        NSString *starStr = [tel substringWithRange:NSMakeRange(3, 4)];
 //        tel = [tel stringByReplacingOccurrencesOfString:starStr withString:@"****"];
-        tel = [NSString stringWithFormat:@"%@****%@",[tel substringToIndex:3],[tel substringFromIndex:8]];
+        tel = [NSString stringWithFormat:@"%@****%@",[tel substringToIndex:3],[tel substringFromIndex:7]];
         return tel;
     }
     return self;

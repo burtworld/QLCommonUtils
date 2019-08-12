@@ -17,4 +17,6 @@
 
 /// 使用RTRootViewController
 - (instancetype)initWithBarImage:(UIImage *)image;
+
+- (void)getScreenInfo:(void(^)(NSString *screenInfo,NSString *detail))block;
 @end
