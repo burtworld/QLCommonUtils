@@ -10,6 +10,9 @@
 #endif
 #endif
 
+#import "QLBrowserAnimationDelegate.h"
+#import "QLBrowserPopAnimator.h"
+#import "QLBrowserPushAnimator.h"
 #import "QLTransitionDismissPopStyleAnimator.h"
 #import "QLTransitionPresenPushStyleAnimator.h"
 #import "QLFileManager.h"

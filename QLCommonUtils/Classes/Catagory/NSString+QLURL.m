@@ -15,10 +15,16 @@
     NSString *encodedString = (NSString *)
     CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
                                                               (CFStringRef)self,
-                                                              (CFStringRef)@"!$&'()*+,-./:;=?@_~%#[]",
+                                                              (CFStringRef)@"!$&'()*+,-./:;=?@_~%[]",
                                                               NULL,
                                                               kCFStringEncodingUTF8));
     return encodedString;
+}
+
+- (NSString *)URLDecodedString
+{
+    NSString *result = [(NSString *)self stringByReplacingOccurrencesOfString:@"+" withString:@" "];
+    return [result stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
 
@@ -64,7 +70,7 @@
 //                NSString *value = [param substringFromIndex:range.location + range.length];
 //                [dic setObject:value forKey:key];
 //            }else{
-//                QLLOG_WARNING(@"查找字符串警告：");
+//                NSLog_WARNING(@"查找字符串警告：");
 //            }
         }
     }

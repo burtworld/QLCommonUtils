@@ -33,7 +33,10 @@
          [self.navigationController.navigationBar setBackgroundImage:self.barImage forBarMetrics:UIBarMetricsDefault];
     }
    
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    self.navigationController.navigationBar.titleTextAttributes = @{
+        NSForegroundColorAttributeName: [UIColor whiteColor],
+        NSFontAttributeName : [UIFont boldSystemFontOfSize:18.0f]
+    };
 
     self.rt_disableInteractivePop = NO;
     // Do any additional setup after loading the view.

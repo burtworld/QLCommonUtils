@@ -7,7 +7,7 @@
 //
 
 #import "MBProgressHUD+QLHUDManager.h"
-#import <SDWebImage/UIImage+GIF.h>
+//#import <SDWebImage/UIImage+GIF.h>
 
 @implementation MBProgressHUD (QLHUDManager)
 
@@ -83,21 +83,21 @@
 }
 
 + (void)showWithGIF:(NSString *)gifurl view:(UIView *)view {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:NO];
-    
-    hud.mode = MBProgressHUDModeCustomView;
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"33e30c18ec6aa4f5a93b3fc1c00007e3" ofType:@"gif"];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    UIImage *image = [UIImage sd_animatedGIFWithData:data];
-    UIImageView * imgV  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    imgV.backgroundColor = [UIColor redColor];
-    imgV.image = image;
-    hud.customView = imgV;
-    // Looks a bit nicer if we make it square.
-    hud.square = YES;
-//    // Optional label text.
-    hud.label.text = NSLocalizedString(@"Done", @"HUD done title");
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:NO];
+//
+//    hud.mode = MBProgressHUDModeCustomView;
+//
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"33e30c18ec6aa4f5a93b3fc1c00007e3" ofType:@"gif"];
+//    NSData *data = [NSData dataWithContentsOfFile:path];
+////    UIImage *image = [UIImage sd_animatedGIFWithData:data];
+//    UIImageView * imgV  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+//    imgV.backgroundColor = [UIColor redColor];
+//    imgV.image = image;
+//    hud.customView = imgV;
+//    // Looks a bit nicer if we make it square.
+//    hud.square = YES;
+////    // Optional label text.
+//    hud.label.text = NSLocalizedString(@"Done", @"HUD done title");
 }
 
 /**

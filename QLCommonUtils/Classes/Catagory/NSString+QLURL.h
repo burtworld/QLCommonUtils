@@ -12,8 +12,8 @@
 
 /// url编码
 - (NSString *)URLEncodedString;
-
-
+/// url解码
+- (NSString *)URLDecodedString;
 /**
  将url的参数全部提取出来 key为url的为字符 串
  

@@ -19,4 +19,5 @@ alpha:alphaValue]
 @interface UIColor (QLColor)
 + (UIColor *)colorFormString:(NSString *)hexString;
 + (UIColor *)randomColorWithName:(NSString *)name;
++ (UIColor *)randomColor;
 @end

@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "QLTransitionDismissPopStyleAnimator.h"
 #import "QLTransitionPresenPushStyleAnimator.h"
-
-
+#import <RTRootNavigationController/RTRootNavigationController.h>
 typedef enum _BACK_TYPE {
     POP                     = 0,    //!<< pop
     POP_TO_ROOT             = 1,    //!<< pop to root
@@ -61,4 +60,6 @@ typedef void(^QLHJDismissBackAction)(void);
                      animated:(BOOL)animated
                    completion:(void (^)(void))completion
                     pushStyle:(BOOL)isPushStyle;
+
+- (UIViewController *)ql_topViewController;
 @end

@@ -175,22 +175,25 @@ static const char QLHJPercentDrivenTransitionKey = '\0';
                              title:(NSString *)title
                          andAction:(void(^)(BOOL isSelect))action {
     UIButton * rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
     if (title) {
         CGFloat width = [title getWidthWithFont:FONT_14 andHeight:44.0f] + 10;
         rightButton.titleLabel.font = FONT_14;
         [rightButton setTitle:title forState:UIControlStateNormal];
-        [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [rightButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-        rightButton.frame = CGRectMake(0, 0, width, 44.0f);
+        rightButton.frame = CGRectMake(0, 0, width < 50 ? 50 : width, 44.0f);
     }
     if (img) {
-        CGFloat width = img.size.width > 44 ? img.size.width : 44;
-        rightButton.frame = CGRectMake(0, 0, width, img.size.height);
+        
+        CGFloat width = img.size.width > 44 ? img.size.width+10 : 44 + 10;
+        rightButton.frame = CGRectMake(0, 0, width, 44);
         [rightButton setImage:img forState:UIControlStateNormal];
     }
     if (hightlightImg) {
         [rightButton setImage:hightlightImg forState:UIControlStateHighlighted];
     }
+//    rightButton.contentMode = UIViewContentModeRight;
     [rightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
     [self addRightBarButtonItem:rightBarButtonItem];
@@ -198,6 +201,7 @@ static const char QLHJPercentDrivenTransitionKey = '\0';
         self.rightBarButtonItemBlock = action;
     }
     return rightBarButtonItem;
+//    return nil;
 }
     
 
@@ -315,6 +319,32 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
         }
         self.percentDrivenTransition = nil;
     }
+}
+
+//获取当前屏幕显示的viewcontroller
+- (UIViewController *)ql_topViewController {
+    UIViewController *resultVC;
+    resultVC = [self _topViewController:[[UIApplication sharedApplication].keyWindow rootViewController]];
+    while (resultVC.presentedViewController) {
+        resultVC = [self _topViewController:resultVC.presentedViewController];
+    }
+    return resultVC;
+}
+
+- (UIViewController *)_topViewController:(UIViewController *)vc {
+    
+    if ([vc isKindOfClass:[UINavigationController class]]) {
+        return [self _topViewController:[(UINavigationController *)vc topViewController]];
+    } else if ([vc isKindOfClass:[UITabBarController class]]) {
+        return [self _topViewController:[(UITabBarController *)vc selectedViewController]];
+    } else if ([vc isKindOfClass:[RTContainerController class]]) {
+        RTContainerController *container = (RTContainerController*)vc;
+        return [self _topViewController:container.contentViewController];
+    }
+    else {
+        return vc;
+    }
+    return nil;
 }
 
 @end

@@ -47,7 +47,7 @@
     #import "NSDictionary+QLToJson.h"
     #import "NSTimer+QLFunction.h"
 
-
+#import "UIViewController+WaterMarker.h"
     #import "NSString+QLBase64.h"
     #import "NSString+QLMD5.h"
     #import "NSString+QLFunctions.h"
@@ -62,7 +62,8 @@
     // TransitionAnimator
     #import "QLTransitionDismissPopStyleAnimator.h"
     #import "QLTransitionPresenPushStyleAnimator.h"
-
+    #import "QLBrowserPushAnimator.h"
+    #import "QLBrowserPopAnimator.h"
 #endif
 
 

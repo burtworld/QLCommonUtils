@@ -60,7 +60,7 @@
 #define SCREEN_WIDTH                    [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT                   [UIScreen mainScreen].bounds.size.height
 #define kApplicationStatusBarHeight     [UIApplication sharedApplication].statusBarFrame.size.height //状态栏的高度
-
+#define kQLSCALE_FACTOR ([UIScreen mainScreen].bounds.size.width/375.0)
 
 #pragma mark - 偏移像素
 #define PADDING_70                      70.0f
@@ -95,7 +95,7 @@
 #define Apps_PATH [DOCUMENT_PATH stringByAppendingPathComponent:@"Apps"]
 // 文档路径
 #define DOC_PATH [DOCUMENT_PATH stringByAppendingPathComponent:@"docs"]
-#define EMOJI_PATH [IMG_CACHE_PATH stringByAppendingPathComponent:@"emoji"];
+
 
 #define IS_IPHONE4 (([UIScreen mainScreen].bounds.size.height == 480 ? YES:NO ))
 #define IS_IPHONE_PLUS (([UIScreen mainScreen].bounds.size.height == 568 ? YES:NO ))

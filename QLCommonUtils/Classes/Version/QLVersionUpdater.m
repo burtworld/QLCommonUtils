@@ -54,12 +54,18 @@
             }
             NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/cn/app/id%@?ls=1&mt=8", appId]];
             if (block) {
-                block(newVersion,releaseNote,url,NO);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    block(newVersion,releaseNote,url,NO);
+                });
+                
             }
         }else{
-            if (block) {
-                block(nil,@"当前已是最新版本",nil,NO);
-            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+               if (block) {
+                   block(nil,@"当前已是最新版本",nil,NO);
+               }
+            });
+            
         }
     }];
     [tast resume];

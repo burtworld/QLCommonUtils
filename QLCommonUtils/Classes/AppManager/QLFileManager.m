@@ -42,4 +42,28 @@
     return  fileArray;
 }
 
++ (NSArray *)getSubFolderInPath:(NSString *)path {
+    NSMutableArray *fileArray = [NSMutableArray array];
+    NSFileManager * fileManger = [NSFileManager defaultManager];
+    BOOL isDir = NO;
+    BOOL isExist = [fileManger fileExistsAtPath:path isDirectory:&isDir];
+    if (isExist) {
+        if (isDir) {
+            NSArray * dirArray = [fileManger contentsOfDirectoryAtPath:path error:nil];
+            NSString * subPath = nil;
+            for (NSString * str in dirArray) {
+                subPath  = [path stringByAppendingPathComponent:str];
+                BOOL issubDir = NO;
+                [fileManger fileExistsAtPath:subPath isDirectory:&issubDir];
+                if (issubDir) {
+                    [fileArray addObject:str];
+                }
+            }
+        }
+    }else{
+        NSLog(@"this path is not exist!");
+    }
+    return  fileArray;
+}
+
 @end

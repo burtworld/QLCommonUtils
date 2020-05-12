@@ -25,5 +25,8 @@
 + (NSArray *_Nullable)getAllFileInPath:(NSString *_Nullable)path;
 
 
+/// 获取子文件夹
+/// @param path 文件路径
++ (NSArray *)getSubFolderInPath:(NSString *)path;
 
 @end

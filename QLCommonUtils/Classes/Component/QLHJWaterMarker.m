@@ -174,23 +174,13 @@
 
     //sqrtLength：原始image的对角线length。在水印旋转矩阵中只要矩阵的宽高是原始image的对角线长度，无论旋转多少度都不会有空白。
     CGFloat sqrtLength = sqrt(viewWidth*viewWidth + viewHeight*viewHeight);
-    //文字的属性
-    NSDictionary *attr = @{
-                           //设置字体大小
-                           NSFontAttributeName: font,
-                           //设置文字颜色
-                           NSForegroundColorAttributeName :textColor,
-                           };
-    NSString* mark = [self getMarkTextWithArray:texts];
-    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:mark attributes:attr];
-    //绘制文字的宽高
-    CGFloat strWidth = attrStr.size.width;
-    CGFloat strHeight = attrStr.size.height;
+    
+//    NSString* mark = [self getMarkTextWithArray:texts];
     
     //开始旋转上下文矩阵，绘制水印文字
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(context, bgColor.CGColor);
-    
+    CGContextFillRect(context, CGRectMake(0, 0, size.width, size.height));
     //将绘制原点（0，0）调整到源image的中心
     CGContextConcatCTM(context, CGAffineTransformMakeTranslation(viewWidth/2, viewHeight/2));
     //以绘制原点为中心旋转
@@ -198,27 +188,58 @@
     //将绘制原点恢复初始值，保证当前context中心和源image的中心处在一个点(当前context已经旋转，所以绘制出的任何layer都是倾斜的)
     CGContextConcatCTM(context, CGAffineTransformMakeTranslation(-viewWidth/2, -viewHeight/2));
     
-    //计算需要绘制的列数和行数
-    int horCount = sqrtLength / (strWidth + HORIZONTAL_SPACE) + 1;
-    int verCount = sqrtLength / (strHeight + VERTICAL_SPACE) + 1;
+//    //计算需要绘制的列数和行数
+//    int horCount = sqrtLength / (strWidth + HORIZONTAL_SPACE) + 1;
+//    int verCount = sqrtLength / (strHeight + VERTICAL_SPACE) + 1;
     
     //此处计算出需要绘制水印文字的起始点，由于水印区域要大于图片区域所以起点在原有基础上移
     CGFloat orignX = -(sqrtLength-viewWidth)/2;
     CGFloat orignY = -(sqrtLength-viewHeight)/2;
     
+    
+    
     //在每列绘制时X坐标叠加
     CGFloat tempOrignX = orignX;
     //在每行绘制时Y坐标叠加
     CGFloat tempOrignY = orignY;
-    for (int i = 0; i < horCount * verCount; i++) {
-        [mark drawInRect:CGRectMake(tempOrignX, tempOrignY, strWidth, strHeight) withAttributes:attr];
-        if (i % horCount == 0 && i != 0) {
-            tempOrignX = orignX;
-            tempOrignY += (strHeight + VERTICAL_SPACE);
-        }else{
-            tempOrignX += (strWidth + HORIZONTAL_SPACE);
+    
+    //文字的属性
+    NSDictionary *attr = @{
+                           //设置字体大小
+                           NSFontAttributeName: font,
+                           //设置文字颜色
+                           NSForegroundColorAttributeName :textColor,
+                           };
+    NSArray *textArray = [self insertBlankMarkTextWithArray:texts];
+    /// 绘制到第几个
+//    int index = 0;
+    NSLog(@"开始计算---------");
+    while (tempOrignY < viewHeight) {
+        for (NSString *mark in textArray) {
+            NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:mark attributes:attr];
+            //绘制文字的宽高
+            CGFloat strWidth = attrStr.size.width;
+            CGFloat strHeight = attrStr.size.height;
+            [mark drawInRect:CGRectMake(tempOrignX, tempOrignY, strWidth, strHeight) withAttributes:attr];
+            tempOrignX += strWidth;
+            if (tempOrignX > viewWidth) {
+                
+//                tempOrignX = sqrt(pow(tempOrignY/ (sin(80 * M_PI / 180)), 2) - pow(tempOrignX, 2));
+                tempOrignY += (strHeight + VERTICAL_SPACE);
+                tempOrignX = orignX + tan(10.0f * M_PI / 180)*tempOrignY;
+            }
         }
     }
+    NSLog(@"计算完成---------");
+//    for (int i = 0; i < horCount * verCount; i++) {
+//        [mark drawInRect:CGRectMake(tempOrignX, tempOrignY, strWidth, strHeight) withAttributes:attr];
+//        if (i % horCount == 0 && i != 0) {
+//            tempOrignX = orignX;
+//            tempOrignY += (strHeight + VERTICAL_SPACE);
+//        }else{
+//            tempOrignX += (strWidth + HORIZONTAL_SPACE);
+//        }
+//    }
     //根据上下文制作成图片
     UIImage *finalImg = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -240,6 +261,22 @@
         return nil;
     }
     return [array componentsJoinedByString:@""];
+}
+
++ (NSArray *)insertBlankMarkTextWithArray:(NSArray *)texts {
+    if (!texts.count) {
+        return nil;
+    }
+    NSMutableArray *array = [NSMutableArray array];
+    for (int i = 0; i < texts.count; i++) {
+        [array addObject:texts[i]];
+        [array addObject:@"　　"];
+    }
+    // 将数组的第一个拼到数组的最后一个
+    if (!array.count) {
+        return nil;
+    }
+    return array;
 }
 
 @end

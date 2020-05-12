@@ -31,7 +31,8 @@ Pod::Spec.new do |s|
   s.dependency 'Base64'
 #  s.dependency 'FMDB/SQLCipher'
   s.dependency 'RTRootNavigationController', '~> 0.7.0'
-  s.dependency 'SDWebImage', '~> 4.3.3'
+#  s.dependency 'SDWebImage'
   s.dependency 'SVProgressHUD', '~> 2.2.5'
   s.dependency 'MBProgressHUD'
+  s.dependency 'Masonry'
 end
