@@ -1,8 +1,10 @@
 PODS:
   - Base64 (1.1.2)
+  - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
   - QLCommonUtils (0.1.3):
     - Base64
+    - Masonry
     - MBProgressHUD
     - RTRootNavigationController (~> 0.7.0)
     - SVProgressHUD (~> 2.2.5)
@@ -17,6 +19,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Base64
+    - Masonry
     - MBProgressHUD
     - RTRootNavigationController
     - SVProgressHUD
@@ -27,8 +30,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
-  QLCommonUtils: c5d9926fd0dd8ef0e8ece8cdfd1d6fe5cb68feac
+  QLCommonUtils: e61ecd3ac944e9ee5e0dc5235489d27583849f88
   RTRootNavigationController: afa6913402be26f8326f7f37fc1550aa67baddcc
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 

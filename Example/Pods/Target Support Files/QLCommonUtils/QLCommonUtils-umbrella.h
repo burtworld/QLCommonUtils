@@ -41,6 +41,7 @@
 #import "QLHJMaskView.h"
 #import "QLHJRTNavigationBar.h"
 #import "QLHJWaterMarker.h"
+#import "UIViewController+WaterMarker.h"
 #import "IBDesignableView.h"
 #import "QLHJBaseNavigationController.h"
 #import "QLHJBaseTableViewController.h"
