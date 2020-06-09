@@ -60,7 +60,7 @@
 #define SCREEN_WIDTH                    [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT                   [UIScreen mainScreen].bounds.size.height
 #define kApplicationStatusBarHeight     [UIApplication sharedApplication].statusBarFrame.size.height //状态栏的高度
-#define kQLSCALE_FACTOR ([UIScreen mainScreen].bounds.size.width/375.0)
+#define kQLSCALE_FACTOR (([UIScreen mainScreen].bounds.size.width > [UIScreen mainScreen].bounds.size.height) ? ([UIScreen mainScreen].bounds.size.width/667) : ([UIScreen mainScreen].bounds.size.width/375))
 
 #pragma mark - 偏移像素
 #define PADDING_70                      70.0f

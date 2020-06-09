@@ -13,7 +13,7 @@
 
 
 + (Class)layerClass {
-    if ([[self class] isKindOfClass:[UIWebView class]]) {
+    if ([[self class] isKindOfClass:[UIWebView class]] || [[self class] isKindOfClass:[UIImageView class]]) {
         return [CALayer class];
     }
     return [CAGradientLayer class];
